@@ -1,0 +1,11 @@
+Solution,Recommended Device,Minimum RAM,Voice Recognition,Text-to-Speech,AI Brain,Cross-Device Sync,Setup Complexity,Monthly Cost,Female Voice
+Ollama + Small LLMs,i9 Laptop (8GB RAM),6-8GB,Whisper integration,System TTS/Piper,Llama 3.2 1B-3B,Manual setup,Medium,$0,Yes (configurable)
+OpenAI Whisper + Free TTS,Both devices,2-4GB,OpenAI Whisper,"Free: pyttsx3, espeak",OpenAI API (paid),Cloud storage,Low-Medium,$5-20 (OpenAI),Yes (various options)
+Home Assistant Voice,i9 Laptop (8GB RAM),4-8GB,Whisper/Speech-to-Phrase,Piper (local),Local or cloud,Built-in,Medium-High,$0,Yes (Piper voices)
+Mycroft AI,i9 Laptop (8GB RAM),4GB,Precise/PocketSphinx,Mimic/Festival,Adapt framework,Cloud sync,Medium,$0,Yes (voice selection)
+Project SATURDAY,i9 Laptop (8GB RAM),8GB,Whisper.cpp,Coqui TTS,OpenAI/local models,Manual setup,Medium-High,$5-15 (APIs),Yes (Coqui)
+Mozilla DeepSpeech + Pyttsx3,Both devices,2GB,Mozilla DeepSpeech,pyttsx3/espeak,Rule-based/simple,File sharing,Low,$0,Yes (configurable)
+Rhasspy,i9 Laptop (8GB RAM),4GB,Kaldi/PocketSphinx,eSpeak/Festival,Rasa NLU,MQTT/HTTP,High,$0,Yes (voice selection)
+Google Cloud Free Tier,Both devices,2GB,Google Speech API,Google TTS (free tier),Google AI free tier,Google account sync,Low,$0 (limited),Yes (many voices)
+Azure Free Tier,Both devices,2GB,Azure Speech Services,Azure Neural Voices,Azure OpenAI free tier,Azure sync,Low,$0 (limited),Yes (neural voices)
+Local Whisper + Local LLM,i9 Laptop (8GB RAM),8GB,Local Whisper,Local TTS engines,Local small models,Self-hosted server,High,$0,Yes (local voices)
