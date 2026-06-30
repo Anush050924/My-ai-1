@@ -3,516 +3,252 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lina AI Assistant - JARVIS Implementation Guide</title>
+    <title>Radha AI - Custom Dashboard for Anushwer</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="app-container">
-        <!-- Header -->
-        <header class="header">
-            <div class="container">
-                <div class="header-content">
-                    <div class="logo">
-                        <div class="logo-icon"></div>
-                        <h1>Lina AI Assistant</h1>
-                    </div>
-                    <div class="status-indicator">
-                        <div class="status-dot" id="statusDot"></div>
-                        <span id="statusText">System Ready</span>
+    <div class="radha-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="radha-logo">
+                    <div class="logo-sphere"></div>
+                    <span>RADHA</span>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <button class="nav-item active" data-module="chat">
+                    <span class="nav-icon">🎙️</span>
+                    <span class="nav-label">Core Chat</span>
+                </button>
+                <button class="nav-item" data-module="creative">
+                    <span class="nav-icon">📝</span>
+                    <span class="nav-label">Creative Studio</span>
+                </button>
+                <button class="nav-item" data-module="visual">
+                    <span class="nav-icon">🎨</span>
+                    <span class="nav-label">Visual Forge</span>
+                </button>
+                <button class="nav-item" data-module="sonic">
+                    <span class="nav-icon">🎵</span>
+                    <span class="nav-label">Sonic Lab</span>
+                </button>
+                <button class="nav-item" data-module="film">
+                    <span class="nav-icon">🎬</span>
+                    <span class="nav-label">Film Studio</span>
+                </button>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="user-badge">
+                    <div class="user-avatar">A</div>
+                    <div class="user-info">
+                        <p class="user-name">Anushwer</p>
+                        <p class="user-status">Authorized</p>
                     </div>
                 </div>
             </div>
-        </header>
-
-        <!-- Navigation -->
-        <nav class="nav-bar">
-            <div class="container">
-                <div class="nav-content">
-                    <button class="nav-btn active" data-section="welcome">Welcome</button>
-                    <button class="nav-btn" data-section="setup">Setup Guide</button>
-                    <button class="nav-btn" data-section="code">Code Structure</button>
-                    <button class="nav-btn" data-section="demo">Interactive Demo</button>
-                    <button class="nav-btn" data-section="config">Configuration</button>
-                </div>
-            </div>
-        </nav>
-
-        <!-- Main Content -->
+        </aside>
+        
+        <!-- Main Content Area -->
         <main class="main-content">
-            <div class="container">
-                <!-- Welcome Section -->
-                <section id="welcome" class="section active">
-                    <div class="welcome-hero">
-                        <div class="hero-content">
-                            <h2>Welcome to Lina AI Assistant</h2>
-                            <p class="hero-subtitle">Your Personal JARVIS-like AI Companion</p>
-                            <div class="hero-features">
-                                <div class="feature-card">
-                                    <div class="feature-icon">🎤</div>
-                                    <h3>Voice Recognition</h3>
-                                    <p>Advanced speech-to-text in 20+ languages</p>
-                                </div>
-                                <div class="feature-card">
-                                    <div class="feature-icon">🧠</div>
-                                    <h3>AI Intelligence</h3>
-                                    <p>Powered by local Phi-3 language model</p>
-                                </div>
-                                <div class="feature-card">
-                                    <div class="feature-icon">🔊</div>
-                                    <h3>Natural Voice</h3>
-                                    <p>Emotional female AI voice synthesis</p>
-                                </div>
-                                <div class="feature-card">
-                                    <div class="feature-icon">🌐</div>
-                                    <h3>Cross-Device</h3>
-                                    <p>Access from any device via WebSocket</p>
-                                </div>
-                            </div>
-                        </div>
+            <!-- Header -->
+            <header class="main-header">
+                <div class="header-left">
+                    <h1 id="moduleTitle">Radha Core Chat</h1>
+                    <p class="header-subtitle" id="moduleSubtitle">Conversational interface with full history</p>
+                </div>
+                <div class="header-right">
+                    <div class="system-status">
+                        <div class="status-dot" id="statusIndicator"></div>
+                        <span id="statusText">Ready</span>
                     </div>
-
-                    <div class="system-overview">
-                        <h3>System Overview</h3>
-                        <div class="overview-grid">
-                            <div class="overview-item">
-                                <strong>Core Technology:</strong> Python 3.11+ with FastAPI
-                            </div>
-                            <div class="overview-item">
-                                <strong>AI Models:</strong> Local deployment for privacy
-                            </div>
-                            <div class="overview-item">
-                                <strong>Speech Processing:</strong> Vosk + XTTS-v2
-                            </div>
-                            <div class="overview-item">
-                                <strong>Architecture:</strong> Modular, extensible design
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Setup Section -->
-                <section id="setup" class="section">
-                    <h2>Complete Setup Guide</h2>
-                    
-                    <div class="setup-phases">
-                        <div class="phase-card">
-                            <h3>Phase 1: Environment Setup</h3>
-                            <div class="setup-steps">
-                                <div class="step">
-                                    <span class="step-number">1</span>
-                                    <div class="step-content">
-                                        <h4>Install Python 3.11+</h4>
-                                        <p>Download from python.org and ensure it's added to PATH</p>
-                                    </div>
-                                </div>
-                                <div class="step">
-                                    <span class="step-number">2</span>
-                                    <div class="step-content">
-                                        <h4>Create Project Directory</h4>
-                                        <div class="code-block">
-                                            <code>mkdir jarvis-ai && cd jarvis-ai</code>
-                                            <button class="copy-btn" onclick="copyToClipboard('mkdir jarvis-ai && cd jarvis-ai')">Copy</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="step">
-                                    <span class="step-number">3</span>
-                                    <div class="step-content">
-                                        <h4>Set Up Virtual Environment</h4>
-                                        <div class="code-block">
-                                            <code>python -m venv .venv
-.venv\Scripts\activate  # Windows
-source .venv/bin/activate  # Linux/Mac</code>
-                                            <button class="copy-btn" onclick="copyToClipboard('python -m venv .venv\n.venv\\Scripts\\activate')">Copy</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="phase-card">
-                            <h3>Phase 2: Dependencies Installation</h3>
-                            <div class="step">
-                                <span class="step-number">4</span>
-                                <div class="step-content">
-                                    <h4>Create requirements.txt</h4>
-                                    <div class="code-block">
-                                        <pre><code>vosk==0.3.45
-whisper-cpp-python==1.1.0
-pyaudio==0.2.14
-TTS==0.22.0
-webrtcvad==2.0.10
-pyttsx3==2.90
-ollama-python==0.1.7
-langchain==0.2.0
-sentence-transformers==2.7.0
-faiss-cpu==1.8.0
-fastapi==0.111.0
-uvicorn[standard]==0.30.0
-websockets==12.0
-pydantic==2.8
-python-dotenv</code></pre>
-                                        <button class="copy-btn" onclick="copyRequirements()">Copy</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="step">
-                                <span class="step-number">5</span>
-                                <div class="step-content">
-                                    <h4>Install Dependencies</h4>
-                                    <div class="code-block">
-                                        <code>pip install -r requirements.txt</code>
-                                        <button class="copy-btn" onclick="copyToClipboard('pip install -r requirements.txt')">Copy</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="phase-card">
-                            <h3>Phase 3: Model Downloads</h3>
-                            <div class="step">
-                                <span class="step-number">6</span>
-                                <div class="step-content">
-                                    <h4>Install Ollama and Download Phi-3</h4>
-                                    <div class="code-block">
-                                        <code>ollama pull phi3:mini</code>
-                                        <button class="copy-btn" onclick="copyToClipboard('ollama pull phi3:mini')">Copy</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="step">
-                                <span class="step-number">7</span>
-                                <div class="step-content">
-                                    <h4>Download Speech Models</h4>
-                                    <div class="code-block">
-                                        <code>mkdir models
-curl -o models/vosk-en.zip https://alphacephei.com/vosk/models/vosk-model-small-en-us-0.15.zip</code>
-                                        <button class="copy-btn" onclick="copyToClipboard('mkdir models\ncurl -o models/vosk-en.zip https://alphacephei.com/vosk/models/vosk-model-small-en-us-0.15.zip')">Copy</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Code Section -->
-                <section id="code" class="section">
-                    <h2>Complete Code Structure</h2>
-                    
-                    <div class="project-tree">
-                        <h3>Project Structure</h3>
-                        <div class="tree-view">
-                            <div class="tree-item">📁 jarvis/</div>
-                            <div class="tree-item indent">📁 .venv/</div>
-                            <div class="tree-item indent">📁 models/</div>
-                            <div class="tree-item indent-2">📁 vosk-model-small-en-us/</div>
-                            <div class="tree-item indent-2">📁 xtts-v2/</div>
-                            <div class="tree-item indent">📁 speech/</div>
-                            <div class="tree-item indent-2">📄 stt.py</div>
-                            <div class="tree-item indent-2">📄 tts.py</div>
-                            <div class="tree-item indent-2">📄 emotion.py</div>
-                            <div class="tree-item indent">📁 llm/</div>
-                            <div class="tree-item indent-2">📄 chat.py</div>
-                            <div class="tree-item indent">📁 api/</div>
-                            <div class="tree-item indent-2">📄 server.py</div>
-                            <div class="tree-item indent-2">📄 relay.py</div>
-                            <div class="tree-item indent">📁 static/</div>
-                            <div class="tree-item indent-2">📄 client.js</div>
-                            <div class="tree-item indent-2">📄 style.css</div>
-                            <div class="tree-item indent">📄 requirements.txt</div>
-                            <div class="tree-item indent">📄 main.py</div>
-                        </div>
-                    </div>
-
-                    <div class="code-files">
-                        <div class="file-tabs">
-                            <button class="tab-btn active" data-file="stt">speech/stt.py</button>
-                            <button class="tab-btn" data-file="tts">speech/tts.py</button>
-                            <button class="tab-btn" data-file="chat">llm/chat.py</button>
-                            <button class="tab-btn" data-file="server">api/server.py</button>
-                            <button class="tab-btn" data-file="main">main.py</button>
-                        </div>
-
-                        <div class="file-content active" id="file-stt">
-                            <div class="file-header">
-                                <span>speech/stt.py - Speech Recognition Module</span>
-                                <button class="copy-btn" onclick="copyFileContent('stt')">Copy</button>
-                            </div>
-                            <pre><code>from vosk import Model, KaldiRecognizer
-import pyaudio, queue, json, threading
-
-MODEL_PATH = "models/vosk-model-small-en-us"
-model = Model(MODEL_PATH)
-rec = KaldiRecognizer(model, 16000)
-audio_q = queue.Queue()
-
-def mic_worker():
-    pa = pyaudio.PyAudio()
-    stream = pa.open(format=pyaudio.paInt16, channels=1, rate=16000,
-                     input=True, frames_per_buffer=8000)
-    while True:
-        audio_q.put(stream.read(4000, exception_on_overflow=False))
-
-threading.Thread(target=mic_worker, daemon=True).start()
-
-def listen():
-    while True:
-        if rec.AcceptWaveform(audio_q.get()):
-            res = json.loads(rec.Result())["text"]
-            if res: yield res</code></pre>
-                        </div>
-
-                        <div class="file-content" id="file-tts">
-                            <div class="file-header">
-                                <span>speech/tts.py - Text-to-Speech Module</span>
-                                <button class="copy-btn" onclick="copyFileContent('tts')">Copy</button>
-                            </div>
-                            <pre><code>from TTS.api import TTS
-tts = TTS("tts_models/multilingual/multi-dataset/xtts_v2", gpu=False)
-
-def speak(text, ref_voice=None, lang="en"):
-    tts.tts_to_file(text=text, file_path="tmp.wav", 
-                    speaker_wav=ref_voice, language=lang)
-    import playsound
-    playsound.playsound("tmp.wav", False)</code></pre>
-                        </div>
-
-                        <div class="file-content" id="file-chat">
-                            <div class="file-header">
-                                <span>llm/chat.py - Language Model Integration</span>
-                                <button class="copy-btn" onclick="copyFileContent('chat')">Copy</button>
-                            </div>
-                            <pre><code>from ollama import Client
-from langchain.llms.ollama import Ollama
-from datetime import datetime
-
-ollama_client = Client(host="http://localhost:11434")
-llm = Ollama(model="phi3:mini", temperature=0.4, base_url=ollama_client.host)
-
-SYSTEM_PROMPT = """
-You are Lina, a warm female AI assistant.
-You must only obey your owner Anushwer.
-Be concise, empathetic if user sounds upset.
-"""
-
-def chat(history, user):
-    msgs = [{"role":"system","content":SYSTEM_PROMPT}] + history + [{"role":"user","content":user}]
-    resp = llm.invoke(msgs, stream=False)
-    return resp</code></pre>
-                        </div>
-
-                        <div class="file-content" id="file-server">
-                            <div class="file-header">
-                                <span>api/server.py - FastAPI WebSocket Server</span>
-                                <button class="copy-btn" onclick="copyFileContent('server')">Copy</button>
-                            </div>
-                            <pre><code>from fastapi import FastAPI, WebSocket
-from speech import stt, tts
-from llm.chat import chat
-import asyncio
-
-app = FastAPI()
-history=[]
-
-@app.websocket("/ws")
-async def jarvis(ws: WebSocket):
-    await ws.accept()
-    async for line in stream_stt():
-        answer = chat(history, line)
-        history.append({"role":"user","content":line})
-        history.append({"role":"assistant","content":answer})
-        await ws.send_json({"text":answer})
-        tts.speak(answer)
-
-async def stream_stt():
-    for text in stt.listen():
-        yield text
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, port=8000)</code></pre>
-                        </div>
-
-                        <div class="file-content" id="file-main">
-                            <div class="file-header">
-                                <span>main.py - Application Entry Point</span>
-                                <button class="copy-btn" onclick="copyFileContent('main')">Copy</button>
-                            </div>
-                            <pre><code>import subprocess, threading, webbrowser, os
-
-threading.Thread(target=lambda: subprocess.run("ollama serve"),daemon=True).start()
-threading.Thread(target=lambda: os.system("python api/server.py"),daemon=True).start()
-webbrowser.open("http://localhost:8000")
-
-while True: pass</code></pre>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Demo Section -->
-                <section id="demo" class="section">
-                    <h2>Interactive Demo</h2>
-                    
-                    <div class="demo-container">
-                        <div class="chat-interface">
-                            <div class="chat-header">
-                                <div class="ai-avatar"></div>
-                                <div class="ai-info">
-                                    <h3>Lina AI Assistant</h3>
-                                    <span class="ai-status" id="aiStatus">Ready to assist</span>
-                                </div>
-                            </div>
-                            
-                            <div class="chat-messages" id="chatMessages">
-                                <div class="message ai-message">
-                                    <div class="message-content">
-                                        Hello! I'm Lina, your AI assistant. I can help you with various tasks, answer questions, and have natural conversations. How can I assist you today?
-                                    </div>
-                                    <div class="message-time">Just now</div>
-                                </div>
-                            </div>
-                            
-                            <div class="chat-input-container">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="chatInput" placeholder="Type your message or use voice input...">
-                                    <button class="voice-btn" id="voiceBtn">
-                                        <div class="voice-icon"></div>
-                                    </button>
-                                    <button class="btn btn--primary" id="sendBtn">Send</button>
-                                </div>
+                </div>
+            </header>
+            
+            <!-- Module Content -->
+            <div class="modules-container">
+                <!-- Chat Module (Default) -->
+                <section id="chatModule" class="module-panel active">
+                    <div class="chat-area">
+                        <div class="chat-window" id="chatWindow">
+                            <div class="welcome-message">
+                                <div class="welcome-icon">✨</div>
+                                <h2>Welcome to Radha</h2>
+                                <p>Your personal AI companion, built exclusively for you, Anushwer.</p>
                             </div>
                         </div>
                         
-                        <div class="demo-controls">
-                            <h3>Demo Controls</h3>
-                            <div class="control-grid">
-                                <div class="control-item">
-                                    <label>Voice Recognition</label>
-                                    <button class="btn btn--outline" id="toggleVoice">Start Listening</button>
-                                </div>
-                                <div class="control-item">
-                                    <label>AI Response Mode</label>
-                                    <select class="form-control" id="responseMode">
-                                        <option value="helpful">Helpful Assistant</option>
-                                        <option value="creative">Creative Mode</option>
-                                        <option value="analytical">Analytical Mode</option>
-                                    </select>
-                                </div>
-                                <div class="control-item">
-                                    <label>Speech Synthesis</label>
-                                    <button class="btn btn--outline" id="testTTS">Test Voice</button>
-                                </div>
+                        <div class="chat-controls">
+                            <div class="input-container">
+                                <input 
+                                    type="text" 
+                                    id="userInput" 
+                                    class="chat-input" 
+                                    placeholder="Type your message or use voice..."
+                                    autocomplete="off"
+                                >
+                                <button id="voiceBtn" class="control-btn voice-btn" title="Start voice input">
+                                    <span>🎤</span>
+                                </button>
+                                <button id="sendBtn" class="control-btn send-btn" title="Send message">
+                                    <span>➤</span>
+                                </button>
+                            </div>
+                            <div class="control-row">
+                                <button id="clearChatBtn" class="control-btn small">Clear</button>
+                                <button id="speakToggle" class="control-btn small">🔊 Off</button>
                             </div>
                         </div>
                     </div>
                 </section>
-
-                <!-- Config Section -->
-                <section id="config" class="section">
-                    <h2>Configuration Panel</h2>
-                    
-                    <div class="config-grid">
-                        <div class="config-card">
-                            <h3>Voice Settings</h3>
-                            <div class="form-group">
-                                <label class="form-label">Voice Type</label>
-                                <select class="form-control">
-                                    <option>Female (Recommended)</option>
-                                    <option>Male</option>
-                                    <option>Neutral</option>
+                
+                <!-- Creative Studio Module -->
+                <section id="creativeModule" class="module-panel">
+                    <div class="studio-area">
+                        <h2>Creative Writing Studio</h2>
+                        <div class="studio-panels">
+                            <div class="panel writing-panel">
+                                <label>Writing Canvas</label>
+                                <textarea id="writingCanvas" placeholder="Start writing your story..."></textarea>
+                            </div>
+                            <div class="panel settings-panel">
+                                <label>Writing Mode</label>
+                                <select id="writingMode">
+                                    <option>Freeform</option>
+                                    <option>Story</option>
+                                    <option>Poetry</option>
+                                    <option>Technical</option>
                                 </select>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Speech Rate</label>
-                                <input type="range" class="form-control" min="0.5" max="2" step="0.1" value="1">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Language</label>
-                                <select class="form-control">
-                                    <option>English</option>
-                                    <option>Spanish</option>
-                                    <option>French</option>
-                                    <option>German</option>
+                                <label>Tone</label>
+                                <select id="writingTone">
+                                    <option>Professional</option>
+                                    <option>Creative</option>
+                                    <option>Casual</option>
+                                    <option>Academic</option>
                                 </select>
-                            </div>
-                        </div>
-
-                        <div class="config-card">
-                            <h3>AI Model Settings</h3>
-                            <div class="form-group">
-                                <label class="form-label">Language Model</label>
-                                <select class="form-control">
-                                    <option>Phi-3 Mini (Default)</option>
-                                    <option>Llama 3.2</option>
-                                    <option>Mistral 7B</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Temperature</label>
-                                <input type="range" class="form-control" min="0" max="1" step="0.1" value="0.4">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Max Response Length</label>
-                                <input type="number" class="form-control" value="500">
-                            </div>
-                        </div>
-
-                        <div class="config-card">
-                            <h3>System Settings</h3>
-                            <div class="form-group">
-                                <label class="form-label">Server Port</label>
-                                <input type="number" class="form-control" value="8000">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Cross-Device Access</label>
-                                <select class="form-control">
-                                    <option>Local Only</option>
-                                    <option>Network Access</option>
-                                    <option>Internet Access</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Debug Mode</label>
-                                <input type="checkbox" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="config-card">
-                            <h3>Privacy & Security</h3>
-                            <div class="form-group">
-                                <label class="form-label">Data Storage</label>
-                                <select class="form-control">
-                                    <option>Local Only (Recommended)</option>
-                                    <option>Cloud Backup</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Conversation History</label>
-                                <input type="number" class="form-control" placeholder="Days to keep (0 = forever)" value="30">
-                            </div>
-                            <div class="form-group">
-                                <button class="btn btn--outline btn--full-width">Clear All Data</button>
+                                <button class="action-btn">✨ Generate</button>
                             </div>
                         </div>
                     </div>
-
-                    <div class="config-actions">
-                        <button class="btn btn--primary">Save Configuration</button>
-                        <button class="btn btn--outline">Reset to Defaults</button>
-                        <button class="btn btn--outline">Export Settings</button>
+                </section>
+                
+                <!-- Visual Forge Module -->
+                <section id="visualModule" class="module-panel">
+                    <div class="studio-area">
+                        <h2>Visual Forge - 3D Canvas</h2>
+                        <div class="canvas-container">
+                            <canvas id="webglCanvas" class="webgl-canvas"></canvas>
+                            <div class="canvas-controls">
+                                <label>Layout</label>
+                                <select id="layoutSelect">
+                                    <option>Sphere</option>
+                                    <option>Cube</option>
+                                    <option>Grid</option>
+                                    <option>Wave</option>
+                                </select>
+                                <label>Color Scheme</label>
+                                <select id="colorScheme">
+                                    <option>Neon Blue</option>
+                                    <option>Purple Haze</option>
+                                    <option>Ocean Depth</option>
+                                    <option>Sunset</option>
+                                </select>
+                                <button class="action-btn">Render</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Sonic Lab Module -->
+                <section id="sonicModule" class="module-panel">
+                    <div class="studio-area">
+                        <h2>Sonic Lab - Music Control</h2>
+                        <div class="sonic-controls">
+                            <div class="control-group">
+                                <label>Prompt</label>
+                                <input type="text" placeholder="Describe the music you want..." value="Ambient electronic with orchestral elements">
+                            </div>
+                            <div class="control-row">
+                                <div class="control-group">
+                                    <label>Genre</label>
+                                    <select>
+                                        <option>Electronic</option>
+                                        <option>Ambient</option>
+                                        <option>Orchestral</option>
+                                        <option>Jazz</option>
+                                    </select>
+                                </div>
+                                <div class="control-group">
+                                    <label>Mood</label>
+                                    <select>
+                                        <option>Calm</option>
+                                        <option>Energetic</option>
+                                        <option>Melancholic</option>
+                                        <option>Uplifting</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="control-row">
+                                <div class="control-group">
+                                    <label>Tempo (BPM)</label>
+                                    <input type="range" min="40" max="200" value="120">
+                                    <span id="tempoValue">120</span>
+                                </div>
+                                <div class="control-group">
+                                    <label>Instruments</label>
+                                    <select multiple>
+                                        <option>Piano</option>
+                                        <option>Strings</option>
+                                        <option>Synth</option>
+                                        <option>Drums</option>
+                                        <option>Bass</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button class="action-btn primary">▶ Generate Music</button>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Film Studio Module -->
+                <section id="filmModule" class="module-panel">
+                    <div class="studio-area">
+                        <h2>Film Studio - Story Timeline</h2>
+                        <div class="timeline-container">
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-content">
+                                        <h4>Act I: Setup</h4>
+                                        <p>Introduce characters and world</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-content">
+                                        <h4>Act II: Conflict</h4>
+                                        <p>Raise stakes and tension</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-content">
+                                        <h4>Act III: Resolution</h4>
+                                        <p>Climax and conclusion</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <textarea placeholder="Write your story here..." class="story-textarea"></textarea>
+                            <button class="action-btn primary">📹 Generate Screenplay</button>
+                        </div>
                     </div>
                 </section>
             </div>
         </main>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="container">
-                <p>&copy; 2024 Lina AI Assistant. Built with 💙 for the future.</p>
-            </div>
-        </footer>
     </div>
-
+    
     <script src="app.js"></script>
 </body>
 </html>
